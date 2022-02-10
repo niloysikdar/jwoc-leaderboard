@@ -1,0 +1,30 @@
+name: Cron Job
+
+on:
+  schedule:
+    # At every 1 hour
+    - cron: "0 * * * *"
+
+jobs:
+  fetch:
+    name: FetchData
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: npm install, check, build, and test using Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm run generate
+        env:
+          GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+          MONGODB_URL: ${{ secrets.MONGODB_URL }}
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Updated Data
+          commit_user_name: niloysikdar
+          commit_user_email: niloysikdar30@gmail.com
+          commit_author: Niloy Sikdar

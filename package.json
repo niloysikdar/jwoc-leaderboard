@@ -19,7 +19,8 @@
     "next": "12.0.10",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "recoil": "^0.6.1"
+    "recoil": "^0.6.1",
+    "sharp": "^0.30.1"
   },
   "devDependencies": {
     "@types/canvas-confetti": "^1.4.2",
