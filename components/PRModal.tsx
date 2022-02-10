@@ -4,6 +4,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { modalState } from "../atoms/modalAtom";
 import { selectedUserState } from "../atoms/selectedUserAtom";
 import { TableDataType } from "../types";
+import { parseName } from "../utils/parseName";
 
 const PRModal = () => {
   const [val, setModalOpen] = useRecoilState(modalState);
@@ -21,7 +22,9 @@ const PRModal = () => {
         <div className="mt-6 px-5 lg:px-2">
           <h2 className="my-[2px] text-2xl text-slate-500 font-medium font-codefont tracking-wide">
             Name:
-            <span className="mx-2 text-slate-700">{userData.full_name}</span>
+            <span className="mx-2 text-slate-700">
+              {parseName(userData.full_name)}
+            </span>
           </h2>
           <h2 className="my-[3px] text-lg text-slate-500 font-medium font-codefont tracking-wide">
             Total Points:

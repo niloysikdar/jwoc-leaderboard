@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
 import { selectedUserState } from "../atoms/selectedUserAtom";
 import { TableDataType } from "../types";
+import { parseName } from "../utils/parseName";
 
 const UserCard = ({ data, index }: { data: TableDataType; index: number }) => {
   const [isModalOpen, setModalOpen] = useRecoilState(modalState);
@@ -33,7 +34,7 @@ const UserCard = ({ data, index }: { data: TableDataType; index: number }) => {
           </div>
           <div>
             <p className="font-codefont text-xl font-medium text-lightblack tracking-wide capitalize lg:text-lg md:text-base">
-              {data.full_name || (
+              {parseName(data.full_name) || (
                 <span className="text-lightgrey">Name not found...</span>
               )}
             </p>

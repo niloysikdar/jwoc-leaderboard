@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
 import { selectedUserState } from "../atoms/selectedUserAtom";
 import { TableDataType } from "../types";
+import { parseName } from "../utils/parseName";
 
 const TopCard = ({ userData }: { userData: TableDataType }) => {
   const [i, setModal] = useRecoilState(modalState);
@@ -34,7 +35,7 @@ const TopCard = ({ userData }: { userData: TableDataType }) => {
           />
         </div>
         <h1 className="my-2 mx-auto text-2xl font-medium font-codefont text-darkblack text-center tracking-[0.2px]">
-          {userData.full_name}
+          {parseName(userData.full_name)}
         </h1>
         <a
           href={userData.user_url}
