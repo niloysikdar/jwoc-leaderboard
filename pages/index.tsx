@@ -51,6 +51,22 @@ const Home: NextPage = () => {
           href="https://jwoc.tech/assets/img/favicon.png"
         />
         <MetaTags />
+
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-ESEG18CYHY"
+        />
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-ESEG18CYHY', { page_path: window.location.pathname });
+            `,
+          }}
+        />
       </Head>
 
       <Header />
