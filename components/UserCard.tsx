@@ -1,7 +1,13 @@
 import Image from "next/image";
+import { useRecoilState } from "recoil";
+import { modalState } from "../atoms/modalAtom";
+import { selectedUserState } from "../atoms/selectedUserAtom";
 import { TableDataType } from "../types";
 
 const UserCard = ({ data, index }: { data: TableDataType; index: number }) => {
+  const [isModalOpen, setModalOpen] = useRecoilState(modalState);
+  const [userData, setUserData] = useRecoilState(selectedUserState);
+
   return (
     <tr>
       <td className="p-5 border-b border-gray-200 bg-darkwhite lg:hidden">
@@ -52,7 +58,10 @@ const UserCard = ({ data, index }: { data: TableDataType; index: number }) => {
       <td className="p-5 border-b text-center border-gray-200 bg-darkwhite text-center lg:hidden">
         <p
           className="py-1 px-3 cursor-pointer font-curlfont text-base font-bold text-lightblack w-fit hover:text-darkwhite hover:bg-primarylight transition rounded-lg text-center"
-          onClick={() => {}}
+          onClick={() => {
+            setModalOpen(true);
+            setUserData(data);
+          }}
         >
           View All PRs
         </p>

@@ -1,7 +1,13 @@
 import Image from "next/image";
+import { useRecoilState } from "recoil";
+import { modalState } from "../atoms/modalAtom";
+import { selectedUserState } from "../atoms/selectedUserAtom";
 import { TableDataType } from "../types";
 
 const TopCard = ({ userData }: { userData: TableDataType }) => {
+  const [i, setModal] = useRecoilState(modalState);
+  const [j, setUserData] = useRecoilState(selectedUserState);
+
   return (
     <div className="relative m-auto p-2 w-full flex justify-center align-center flex-col bg-darkwhite shadow-[0_0_4px_rgba(50,69,107,0.2)] rounded-[6px] z-[1] overflow-hidden">
       <div className="m-auto w-full flex justify-center align-center flex-col bg-primarylight rounded-[6px]">
@@ -42,7 +48,10 @@ const TopCard = ({ userData }: { userData: TableDataType }) => {
           {userData.college}
         </p>
         <button
-          onClick={() => {}}
+          onClick={() => {
+            setModal(true);
+            setUserData(userData);
+          }}
           className="m-auto mb-1.5 px-3 py-1 text-lg font-bold font-curlfont text-sky-600 bg-sky-100 hover:bg-sky-200 text-center rounded-full transition"
         >
           View All PRs

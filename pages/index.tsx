@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useRecoilValue } from "recoil";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -7,8 +8,12 @@ import Footer from "../components/Footer";
 import data from "../data.json";
 import Table from "../components/Table";
 import TopCard from "../components/TopCard";
+import PRModal from "../components/PRModal";
+import { modalState } from "../atoms/modalAtom";
 
 const Home: NextPage = () => {
+  const isModalOpen = useRecoilValue(modalState);
+
   return (
     <>
       <Head>
@@ -58,6 +63,8 @@ const Home: NextPage = () => {
           <Table data={data.data.slice(3, data.data.length)} />
         </div>
       </section>
+
+      {isModalOpen && <PRModal />}
 
       <Footer />
     </>
