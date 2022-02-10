@@ -1,3 +1,86 @@
+/* **************************** Fonts **************************** */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&display=swap");
+
+/* **************************** Site General Settings **************************** */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* **************************** Body Settings **************************** */
+
+body {
+  background: #ffffff;
+  font-family: "Inter", sans-serif;
+}
+
+/* **************************** Scroll Bar **************************** */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #222831;
+  border-radius: 2px;
+}
+
+#div_ScrollBar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background: transparent;
+}
+#div_ScrollBar::-webkit-scrollbar-track {
+  background: #e2e8f0;
+  border-radius: 4px;
+}
+#div_ScrollBar::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 4px;
+}
+
+/* **************************** Selection **************************** */
+
+::selection {
+  color: #222831;
+  background: #f7f0c2;
+}
+
+/* **************************** User Select None **************************** */
+
+img,
+.noselect {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  pointer-events: none;
+
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+.user_image {
+  position: relative !important;
+}
+
+/* **************************** Custom Fonts **************************** */
+
+@font-face {
+  font-family: "Blanka";
+  src: url(../assets/Blanka.otf);
+}
+
+/* **************************** Styles End **************************** */

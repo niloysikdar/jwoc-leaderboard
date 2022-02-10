@@ -9,6 +9,7 @@
     "generate": "node backend/generate.js"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.5",
     "axios": "^0.25.0",
     "dotenv": "^16.0.0",
     "mongodb": "^4.3.1",
