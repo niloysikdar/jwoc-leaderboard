@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 
 import data from "../data.json";
 import Table from "../components/Table";
+import TopCard from "../components/TopCard";
 
 const Home: NextPage = () => {
   return (
@@ -40,6 +41,12 @@ const Home: NextPage = () => {
 
           <div className="relative my-10 px-12 flex justify-center items-center gap-8 lg:px-8 sm:px-2 md:flex-col"></div>
 
+          <div className="relative my-10 px-12 flex justify-center items-center gap-8 lg:px-8 sm:px-2 md:flex-col">
+            <TopCard userData={data.data[0]} />
+            <TopCard userData={data.data[1]} />
+            <TopCard userData={data.data[2]} />
+          </div>
+
           <div className="my-12 mx-12 lg:mx-8 sm:mx-2">
             <input
               type="search"
@@ -48,7 +55,7 @@ const Home: NextPage = () => {
             />
           </div>
 
-          <Table data={data.data} />
+          <Table data={data.data.slice(3, data.data.length)} />
         </div>
       </section>
 

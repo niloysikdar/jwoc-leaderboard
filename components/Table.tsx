@@ -1,5 +1,6 @@
 import { TableDataType } from "../types";
 import TableHeader from "./TableHeader";
+import UserCard from "./UserCard";
 
 const Table = ({ data }: { data: TableDataType[] }) => {
   return (
@@ -8,11 +9,11 @@ const Table = ({ data }: { data: TableDataType[] }) => {
         <table className="w-full table-auto">
           <TableHeader />
 
-          {/* <tbody>
+          <tbody>
             {data.map((item, i) => (
               <UserCard key={item.user_name} data={item} index={i} />
             ))}
-          </tbody> */}
+          </tbody>
         </table>
       </div>
     </div>
