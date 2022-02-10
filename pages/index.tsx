@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 import data from "../data.json";
+import Table from "../components/Table";
 
 const Home: NextPage = () => {
   return (
@@ -46,6 +47,8 @@ const Home: NextPage = () => {
               placeholder="Search for your Name, GitHub username or college"
             />
           </div>
+
+          <Table data={data.data} />
         </div>
       </section>
 
