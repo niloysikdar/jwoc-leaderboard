@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Script from "next/script";
 import { ChangeEvent, useState, useEffect } from "react";
 import Fuse from "fuse.js";
 import { useRecoilValue } from "recoil";
@@ -51,23 +52,21 @@ const Home: NextPage = () => {
           href="https://jwoc.tech/assets/img/favicon.png"
         />
         <MetaTags />
+      </Head>
 
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-ESEG18CYHY"
-        />
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-ESEG18CYHY"
+        strategy="afterInteractive"
+      />
 
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+           window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-ESEG18CYHY', { page_path: window.location.pathname });
-            `,
-          }}
-        />
-      </Head>
+        `}
+      </Script>
 
       <Header />
 

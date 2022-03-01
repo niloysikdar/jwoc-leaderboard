@@ -12,4 +12,5 @@ export interface TableDataType {
 interface PRDataType {
   url: string;
   difficulty: string;
+  phase: number;
 }

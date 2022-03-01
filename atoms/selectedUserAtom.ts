@@ -11,6 +11,7 @@ export const selectedUserState = atom({
       {
         url: "",
         difficulty: "",
+        phase: 0,
       },
     ],
     full_name: "",

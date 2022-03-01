@@ -53,6 +53,7 @@ const PRModal = () => {
                   key={prData.url}
                   link={prData.url}
                   difficulty={prData.difficulty}
+                  phase={prData.phase}
                 />
               ))}
             </ol>

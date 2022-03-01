@@ -1,4 +1,12 @@
-const EachPR = ({ link, difficulty }: { link: string; difficulty: string }) => {
+const EachPR = ({
+  link,
+  difficulty,
+  phase,
+}: {
+  link: string;
+  difficulty: string;
+  phase: number;
+}) => {
   const { bgColor, textColor } = getColor(difficulty);
 
   return (
@@ -12,14 +20,19 @@ const EachPR = ({ link, difficulty }: { link: string; difficulty: string }) => {
         >
           {link}
         </a>
-        <span className="mt-1 block text-slate-500 text-base font-medium font-codefont tracking-wider">
-          Difficulty:
-          <span
-            className={`mx-1 px-2 py-[2px] rounded-full ${bgColor} ${textColor}`}
-          >
-            {difficulty}
+        <div className="flex items-center flex-wrap gap-1">
+          <span className="mt-1 block text-slate-500 text-base font-medium font-codefont tracking-wider">
+            Difficulty:
+            <span
+              className={`mx-1 px-2 py-[2px] rounded-full ${bgColor} ${textColor}`}
+            >
+              {difficulty}
+            </span>
           </span>
-        </span>
+          <span className="mt-1 block text-slate-500 text-base font-medium font-codefont tracking-wider flex items-center">
+            Phase: {phase}
+          </span>
+        </div>
       </li>
     </>
   );

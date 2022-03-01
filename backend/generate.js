@@ -150,12 +150,22 @@ const filterJwoc = (allData) => {
         user_url: prData.user.html_url,
         pr_url: prData.html_url,
         labels: prData.labels.map((labelData) => labelData.name),
+        phase: getPhase(prData.created_at),
       };
       finalData = [...finalData, data];
     });
   }
 
   return finalData;
+};
+
+const getPhase = (created_at) => {
+  const phase1deadlineISO = "2022-02-28T18:31:00.000Z";
+  const deadline1 = new Date(phase1deadlineISO);
+  const createdAtDate = new Date(created_at);
+
+  if (createdAtDate > deadline1) return 2;
+  return 1;
 };
 
 const generateRank = (fullData) => {
@@ -166,7 +176,10 @@ const generateRank = (fullData) => {
       (data) => data.user_name === eachPrData.user_name
     );
 
-    const { point, difficulty } = getPoints(eachPrData.labels);
+    const { point, difficulty } = getPoints(
+      eachPrData.labels,
+      eachPrData.phase
+    );
 
     if (index === -1) {
       const userData = {
@@ -174,7 +187,13 @@ const generateRank = (fullData) => {
         avatar_url: eachPrData.avatar_url,
         user_url: eachPrData.user_url,
         total_points: point,
-        pr_urls: [{ url: eachPrData.pr_url, difficulty: difficulty }],
+        pr_urls: [
+          {
+            url: eachPrData.pr_url,
+            difficulty: difficulty,
+            phase: eachPrData.phase,
+          },
+        ],
       };
 
       finalData = [...finalData, userData];
@@ -183,6 +202,7 @@ const generateRank = (fullData) => {
       finalData[index].pr_urls.push({
         url: eachPrData.pr_url,
         difficulty: difficulty,
+        phase: eachPrData.phase,
       });
     }
   });
@@ -190,22 +210,34 @@ const generateRank = (fullData) => {
   return finalData;
 };
 
-const getPoints = (labelsArray) => {
+const getPoints = (labelsArray, phase) => {
   let point = 0,
     difficulty = "";
 
   labelsArray.map((label) => {
     if (label.toLowerCase().includes(levelsData.easy.toLowerCase())) {
-      point = 1;
       difficulty = levelsData.easy;
+      if (phase === 1) {
+        point = 1;
+      } else {
+        point = 2;
+      }
     }
     if (label.toLowerCase().includes(levelsData.medium.toLowerCase())) {
-      point = 3;
       difficulty = levelsData.medium;
+      if (phase === 1) {
+        point = 3;
+      } else {
+        point = 4;
+      }
     }
     if (label.toLowerCase().includes(levelsData.hard.toLowerCase())) {
-      point = 5;
       difficulty = levelsData.hard;
+      if (phase === 1) {
+        point = 5;
+      } else {
+        point = 8;
+      }
     }
   });
 
