@@ -29,7 +29,7 @@ const EachPR = ({
               {difficulty}
             </span>
           </span>
-          <span className="mt-1 block text-slate-500 text-base font-medium font-codefont tracking-wider flex items-center">
+          <span className="mt-1 text-slate-500 text-base font-medium font-codefont tracking-wider flex items-center">
             Phase: {phase}
           </span>
         </div>
